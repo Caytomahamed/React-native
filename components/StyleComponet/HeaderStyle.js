@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import Color from "../../constant/Color";
+import DefaultStyle from "../../constant/DefaultStyle";
+
 
 const HeaderStyle = props => {
   return (
-    <View style= {styles.header}>
-        <Text style={styles.headerText}>{props.title}</Text>
+    <View style={styles.header}>
+      <Text style={DefaultStyle.title}>{props.title}</Text>
     </View>
-  )
+  );
 }
 
 export default HeaderStyle

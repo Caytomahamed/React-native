@@ -8,14 +8,17 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
+import BodyText from "../components/StyleComponet/BodyText";
 
 import Card from "../components/StyleComponet/Card";
 import Input from "../components/StyleComponet/Input";
+import MainButton from "../components/StyleComponet/MainButton";
 import NumberOutput from "../components/StyleComponet/NumberOutput";
 import Color from "../constant/Color";
+import DefaultStyle from "../constant/DefaultStyle";
 
 
-const StartGame = props => {
+const StartGame = (props) => {
   const [enterValue, setEnterValue] = useState("");
   const [confirm, setConfirm] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
@@ -46,9 +49,11 @@ const StartGame = props => {
   if (confirm) {
     confirmOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <Text style={DefaultStyle.text}>You selected</Text>
         <NumberOutput>{selectedNumber}</NumberOutput>
-        <Button title="START GAME" onPress={() => props.onStartGame(selectedNumber)} />
+        <MainButton
+          onPress={() => props.onStartGame(selectedNumber)}
+        >Game Start</MainButton>
       </Card>
     );
   }
@@ -60,9 +65,9 @@ const StartGame = props => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>Start a New Game!</Text>
+        <Text style={DefaultStyle.title}>Start a New Game!</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select Number</Text>
+          <BodyText>Select Number</BodyText>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -104,10 +109,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
   },
-  title: {
-    fontSize: 20,
-    marginVertical: 10,
-  },
   inputContainer: {
     width: 300,
     maxWidth: "80%",
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   summaryContainer: {
     marginTop: 20,
     alignItems: "center",
-  }
+  },
 });
 
 export default StartGame;

@@ -7,20 +7,21 @@ import StartGame from "./screens/StartGame";
 import GameScreen from "./screens/GameScreen";
 import GameOver from "./screens/GameOver";
 import { useFonts } from "expo-font";
-import { AppLoading } from "expo";
+import  {AppLoading } from "expo";
 
 export default function App() {
   const [selectedNumber, setSelectedNumber] = useState();
   const [guessRounds, setGuessRounds] = useState(0);
-  
-    let [fontsLoaded] = useFonts({
-      "Inter-Black": require("./assets/fonts/Inter-Black.otf"),
-    });
 
-    if (!fontsLoaded) {
-      return <AppLoading />;
-    }
-    
+  let [fontsLoaded] = useFonts({
+   "OpenSans-Bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+   "OpenSans-Regular": require("./assets/fonts/OpenSans-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   const configureNewGameHandler = () => {
     setGuessRounds(0);
     setSelectedNumber(null);
@@ -35,6 +36,7 @@ export default function App() {
   };
 
   let content = <StartGame onStartGame={startGameHandler} />;
+
 
   if (selectedNumber && guessRounds <= 0) {
     content = (
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
 // container: {
 //   paddingHorizontal: 30,
 //   paddingTop: 50,
